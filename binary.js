@@ -142,3 +142,62 @@ class BinarySearchTrees {
     return this.left._findMin();
   }
 }
+
+let numTree = new BinarySearchTrees();
+numTree.insert(3)
+numTree.insert(1)
+numTree.insert(4)
+numTree.insert(6)
+numTree.insert(9)
+numTree.insert(2)
+numTree.insert(5)
+numTree.insert(7)
+
+// console.log(numTree)
+
+let letTree = new BinarySearchTrees();
+letTree.insert('E')
+letTree.insert('A')
+letTree.insert('S')
+letTree.insert('Y')
+letTree.insert('Q')
+letTree.insert('U')
+letTree.insert('E')
+letTree.insert('S')
+letTree.insert('T')
+letTree.insert('I')
+letTree.insert('O')
+letTree.insert('N')
+
+// console.log(letTree)
+
+// numTree.remove(3)
+// console.log(numTree)
+
+function tree(t) {
+  if (!t) {
+    return 0;
+  }
+  return tree(t.left) + t.value + tree(t.right)
+}
+
+// console.log(tree(numTree))
+
+function heightOfTree(tree) {
+  if (tree == null) {
+    return 0;
+  } else {
+    /* compute the depth of each subtree */
+    let lDepth = heightOfTree(tree.left);
+    let rDepth = heightOfTree(tree.right);
+
+    /* use the larger one */
+    if (lDepth > rDepth)
+      return (lDepth + 1);
+    else
+      return (rDepth + 1);
+  }
+}
+
+console.log(heightOfTree(letTree))
+console.log(heightOfTree(numTree))
