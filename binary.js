@@ -134,6 +134,7 @@ class BinarySearchTrees {
       }
     }
   }
+  
 
   _findMin() {
     if (!this.left) {
@@ -142,6 +143,39 @@ class BinarySearchTrees {
     return this.left._findMin();
   }
 }
+
+function preOrder(node){
+  if(!node){
+      return;
+  }
+  console.log(node.value)
+  preOrder(node.left);
+  preOrder(node.right);
+}
+// preOrder(root)
+
+function inOrder(node){
+  if(!node){
+      return;
+  }
+  inOrder(node.left);
+  console.log(node.value)
+  inOrder(node.right);
+}
+// inOrder(root);
+
+function posOrder(node){
+  if(!node){
+      return;
+  }
+  posOrder(node.left);
+  posOrder(node.right);
+  console.log(node.value);
+}
+
+
+// Questions below 
+
 
 let numTree = new BinarySearchTrees();
 numTree.insert(3)
@@ -199,5 +233,25 @@ function heightOfTree(tree) {
   }
 }
 
-console.log(heightOfTree(letTree))
-console.log(heightOfTree(numTree))
+// console.log(heightOfTree(letTree))
+// console.log(heightOfTree(numTree))
+
+let numArr = [25, 15, 50, 10, 24, 35, 70, 4, 12, 18, 31, 44, 66, 90, 22];
+let numArrBST = new BinarySearchTrees();
+for (let item of numArr){
+  numArrBST.insert(item)
+}
+
+console.log(numArrBST)
+/*
+            25
+          /    \
+        /        \
+      15          50
+    /    \      /    \
+   10     24   35     70
+  /  \   /    /  \   /  \ 
+ 4   12 18   31  44 66  90
+          \
+           22
+*/
